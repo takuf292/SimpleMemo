@@ -1,8 +1,10 @@
+package jp.wings.nikkeibp.simplememo;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class OpenHelper extends SQLiteOpenHelper {
+public class MemoOpenHelper extends SQLiteOpenHelper {
 
     // データベース名
     static final private String DBName = "MEMO_DB";
@@ -10,7 +12,7 @@ public class OpenHelper extends SQLiteOpenHelper {
     static final private int VERSION = 1;
 
     //コンストラクタ　以下のように呼ぶこと
-    public OpenHelper(Context context){
+    public MemoOpenHelper(Context context){
         super(context, DBName, null, VERSION);
     }
 
