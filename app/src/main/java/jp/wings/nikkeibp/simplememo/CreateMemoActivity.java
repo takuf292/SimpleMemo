@@ -8,10 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TwoLineListItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+
 import java.util.UUID;
+
+
 
 public class CreateMemoActivity extends AppCompatActivity {
 
@@ -21,6 +27,14 @@ public class CreateMemoActivity extends AppCompatActivity {
     boolean newFlag = false;
     // id
     String id = "";
+
+
+    //スマホの戻るボタンが押された時
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, jp.wings.nikkeibp.simplememo.ListActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +88,9 @@ public class CreateMemoActivity extends AppCompatActivity {
                 // 入力内容を取得する
                 EditText body  = (EditText)findViewById(R.id.body);
                 String bodyStr = body.getText().toString();
+                //タグ入力内容を取得する
+                //TextInputEditText tag = (TextInputEditText) findViewById(R.id.tagEditText);
+               // String tagStr = tag.getText().toString();
 
                 //　Todo:データベースに保存する
                 SQLiteDatabase db = helper.getWritableDatabase();
@@ -82,15 +99,17 @@ public class CreateMemoActivity extends AppCompatActivity {
                         // 新規作成の場合
                         // 新しくuuidを発行する
                         id = UUID.randomUUID().toString();
+                        ListActivity.pStr = id;
                         // INSERT
                         db.execSQL("insert into MEMO_TABLE(uuid, body) VALUES('"+ id +"', '"+ bodyStr +"')");
                     }else{
                         // UPDATE
-                        db.execSQL("update MEMO_TABLE set body = '"+ bodyStr +"' where uuid = '"+id+"'");
+                        db.execSQL("update MEMO_TABLE set body = '"+ bodyStr + "' where uuid = '"+id+"' ");
                     }
                 } finally {
                     db.close();
                 }
+
                 // 保存後に一覧に戻る
                 Intent intent = new Intent(CreateMemoActivity.this, jp.wings.nikkeibp.simplememo.ListActivity.class);
                 startActivity(intent);
@@ -110,6 +129,8 @@ public class CreateMemoActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
     }
 }

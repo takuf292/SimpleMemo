@@ -10,13 +10,23 @@
     <EditText
         android:id="@+id/body"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_height="514dp"
+        android:layout_weight="6"
+        android:gravity="top|left"
         android:inputType="textMultiLine"
         android:lines="50"
-        android:layout_weight="9"
-        android:gravity="top|left"
+        android:textSize="20sp" />
+
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tagEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="タグを付けたい場合入力"
+        android:inputType="text"
         />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +37,7 @@
         <Button
             android:id="@+id/register"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="登録する"
             />
@@ -35,7 +45,7 @@
         <Button
             android:id="@+id/back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="戻る"
             />
