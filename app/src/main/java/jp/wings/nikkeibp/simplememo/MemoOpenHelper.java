@@ -27,7 +27,6 @@ public class MemoOpenHelper extends SQLiteOpenHelper {
          * 引数１ ・・・ id : 列名, INTEGER : 数値型, PRIMARY KEY : テーブル内の行で重複なし , AUTOINCREMENT : １から振っていく
          * 引数2 ・・・　uuid : 列名 , TEXT : 文字列型　データベースの識別番号的なもの
          * 引数3 ・・・ body : 列名　,　TEXT　: 文字列型 メモ入力フォームの内容
-         * 引数4 ・・・ tag : 列名　, TEXT : 文字列型　それぞれのメモにつけられるタグ　検索用
          */
         db.execSQL("CREATE TABLE MEMO_TABLE (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
